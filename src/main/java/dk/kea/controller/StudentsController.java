@@ -17,12 +17,14 @@ public class StudentsController {
 
     public StudentsController(){
         students = new ArrayList<>();
+        students.add(new Student(1, "Claus", "Bove", LocalDate.now(), "21212121-2121"));
+        students.add(new Student(2, "Anna", "Bove", LocalDate.now(), "fsdfdsfsdf"));
+        students.add(new Student(3, "Ib", "Bove", LocalDate.now(), "257657567"));
+
     }
 
     @GetMapping("/")
     public String index(Model model){
-
-       System.out.println(students.get(0));
         model.addAttribute("student_data", students);
         return "index";
     }

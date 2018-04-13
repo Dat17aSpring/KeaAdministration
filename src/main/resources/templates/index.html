@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Students at Kea</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+
+    <div class="container">
+
+
+
     <h1>Students</h1>
     <p>Enrolled students at kea</p>
 
-    <a href="/create">Create</a>
+    <a href="/create" class="btn">Create</a>
 
     <table>
         <thead>
@@ -28,13 +35,17 @@
             <td th:text="${student.lastName}"></td>
             <td th:text="${student.enrollmentDate}"></td>
             <td th:text="${student.cpr}"></td>
-            <td></td>
+            <td>
+                <a th:href=" ${'/details?id=' + student.studentId} " class="btn btn-details">Details</a>
+                <a href="/edit" class="btn btn-ed">Edit</a>
+                <a href="/delete" class="btn btn-del">Delete</a>
+            </td>
         </tr>
 
         </tbody>
 
     </table>
 
-
+    </div>
 </body>
 </html>
