@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Student</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Create Student</h1>
+
+
+    <form action="/edit" method="post">
+
+        <input type="hidden" th:value="${student.studentId}" name="studentId">
+
+        <label for="">First Name</label><br>
+        <input type="text" th:value="${student.firstName}" name="firstName">
+        <br>
+        <label for="">Last Name</label><br>
+        <input type="text" th:value="${student.lastName}" name="lastName">
+        <br>
+        <label for="">Enrollment date</label><br>
+        <input type="date" th:value="${student.enrollmentDate}" name="enrollmentDate">
+        <br>
+        <label for="">cpr</label><br>
+        <input type="text" th:value="${student.cpr}" name="cpr">
+        <br>
+        <input type="submit" class="btn" value="SEND">
+
+    </form>
+
+
+</div>
+</body>
+</html>

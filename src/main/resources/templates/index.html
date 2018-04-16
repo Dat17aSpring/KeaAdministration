@@ -37,8 +37,8 @@
             <td th:text="${student.cpr}"></td>
             <td>
                 <a th:href=" ${'/details?id=' + student.studentId} " class="btn btn-details">Details</a>
-                <a href="/edit" class="btn btn-ed">Edit</a>
-                <a href="/delete" class="btn btn-del">Delete</a>
+                <a th:href=" ${'/edit?id=' + student.studentId} " class="btn btn-ed">Edit</a>
+                <a th:href=" ${'/delete?id=' + student.studentId} " class="btn btn-del">Delete</a>
             </td>
         </tr>
 

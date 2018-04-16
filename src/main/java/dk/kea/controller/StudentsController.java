@@ -58,6 +58,13 @@ public class StudentsController {
         return "redirect:/";
     }
 
+    @GetMapping("/edit")
+    public String update(@RequestParam("id") int id, Model model){
+        Student stud = students.get(id-1);
+        model.addAttribute("student", stud );
+        return "edit";
+    }
+
 
 
 
