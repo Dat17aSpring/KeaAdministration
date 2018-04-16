@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,8 +39,30 @@ public class StudentsController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute Student student){
+        student.setStudentId(students.size()+1);
         students.add(student);
         return "redirect:/";
     }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") int id, Model model){
+
+        Student stud = students.get(id-1);
+        model.addAttribute("student", stud );
+        return "delete";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@ModelAttribute("id") Integer id){
+        students.remove(id-1);
+        return "redirect:/";
+    }
+
+
+
+
+
+
+
 
 }
