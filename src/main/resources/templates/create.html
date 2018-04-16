@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create Student</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+    <h1>Create Student</h1>
+
+
+    <form action="/create" method="post">
+
+        <label for="">First Name</label><br>
+        <input type="text" name="lastName" placeholder="First Name">
+        <br>
+        <label for="">Last Name</label><br>
+        <input type="text" name="firstName">
+        <br>
+        <label for="">Enrollment date</label><br>
+        <input type="date" name="enrollmentDate">
+        <br>
+        <label for="">cpr</label><br>
+        <input type="text" name="cpr">
+        <br>
+        <input type="submit" class="btn" value="SEND">
+
+    </form>
+
+
+</div>
 </body>
 </html>

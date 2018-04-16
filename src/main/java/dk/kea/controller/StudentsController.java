@@ -5,6 +5,8 @@ import dk.kea.model.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,8 +33,13 @@ public class StudentsController {
 
     @GetMapping("/create")
     public String create(){
-        students.add(new Student(1, "Claus", "Bove", LocalDate.now(), "21212121-2121"));
         return "create";
+    }
+
+    @PostMapping("/create")
+    public String create(@ModelAttribute Student student){
+        students.add(student);
+        return "redirect:/";
     }
 
 }
