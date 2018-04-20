@@ -65,6 +65,13 @@ public class StudentsController {
         return "edit";
     }
 
+    @PostMapping("/edit")
+    public String update(@ModelAttribute Student student){
+        students.remove(student.getStudentId() -1);
+        students.add(student);
+        return "redirect:/";
+    }
+
 
 
 
