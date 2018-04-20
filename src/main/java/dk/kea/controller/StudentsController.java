@@ -2,6 +2,7 @@ package dk.kea.controller;
 
 
 import dk.kea.model.Student;
+import dk.kea.repository.StudentArrayListRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +17,25 @@ import java.util.List;
 @Controller
 public class StudentsController {
 
+
+    private StudentArrayListRepository studentsRepository;
+
     private List<Student> students;
 
     public StudentsController(){
-        students = new ArrayList<>();
-        students.add(new Student(1, "Claus", "Bove", LocalDate.now(), "21212121-2121"));
+
+        studentsRepository = new StudentArrayListRepository();
+
+       students = new ArrayList<>();
+       /* students.add(new Student(1, "Claus", "Bove", LocalDate.now(), "21212121-2121"));
         students.add(new Student(2, "Anna", "Bove", LocalDate.now(), "fsdfdsfsdf"));
         students.add(new Student(3, "Ib", "Bove", LocalDate.now(), "257657567"));
-
+*/
     }
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("student_data", students);
+        model.addAttribute("student_data", studentsRepository.readAll());
         return "index";
     }
 
@@ -39,8 +46,11 @@ public class StudentsController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute Student student){
-        student.setStudentId(students.size()+1);
-        students.add(student);
+
+        //student.setStudentId(students.size()+1);
+        //students.add(student);
+
+        studentsRepository.create(student);
         return "redirect:/";
     }
 
