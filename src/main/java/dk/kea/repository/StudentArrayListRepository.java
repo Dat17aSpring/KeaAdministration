@@ -1,11 +1,13 @@
 package dk.kea.repository;
 
 import dk.kea.model.Student;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class StudentArrayListRepository implements IStudentRepository {
 
     private List<Student> students;
@@ -30,16 +32,17 @@ public class StudentArrayListRepository implements IStudentRepository {
 
     @Override
     public Student read(int id) {
-        return null;
+        return students.get(id-1);
     }
 
     @Override
     public void update(Student student) {
-
+        students.remove(student.getStudentId()-1);
+        students.add(student);
     }
 
     @Override
     public void delete(int id) {
-
+        students.remove(id-1);
     }
 }
