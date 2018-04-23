@@ -39,16 +39,18 @@ public class StudentsDbRepository implements IStudentRepository {
     public void create(Student student) {
 
         String sql = "INSERT";
+        String firstName = student.getFirstName();
+
         jdbc.update("INSERT INTO KeaStudentsDb.students " +
                 "(first_name, last_name, enrollment_date, cpr) " +
-                "VALUES ('" + student.getFirstName() +"', '"+ student.getLastName() +"' ,  '"+ student.getEnrollmentDate()+"','" + student.getCpr() + "' )");
+                "VALUES ('" + firstName +"', '"+ student.getLastName() +"' ,  '"+ student.getEnrollmentDate()+"','" + student.getCpr() + "' )");
 
     }
 
     @Override
     public Student read(int id) {
 
-        String sql = "SELECT * FROM KeaStudentsDb.students WHERE students_id = " + id;
+        String sql = "SELECT * FROM KeaStudentsDb.students WHERE students_id =" + id;
         sqlRowSet = jdbc.queryForRowSet(sql);
 
         while (sqlRowSet.next()) {
