@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public class StudentsDbRepository implements IStudentRepository {
 
-
     @Autowired
     JdbcTemplate jdbc;
     SqlRowSet sqlRowSet;
@@ -39,10 +38,31 @@ public class StudentsDbRepository implements IStudentRepository {
     @Override
     public void create(Student student) {
 
+        String sql = "INSERT";
+        jdbc.update("INSERT INTO KeaStudentsDb.students " +
+                "(first_name, last_name, enrollment_date, cpr) " +
+                "VALUES ('" + student.getFirstName() +"', '"+ student.getLastName() +"' ,  '"+ student.getEnrollmentDate()+"','" + student.getCpr() + "' )");
+
     }
 
     @Override
     public Student read(int id) {
+
+        String sql = "SELECT * FROM KeaStudentsDb.students WHERE students_id = " + id;
+        sqlRowSet = jdbc.queryForRowSet(sql);
+
+        while (sqlRowSet.next()) {
+
+            return new Student(sqlRowSet.getInt("students_id"),
+                    sqlRowSet.getString("first_name"),
+                    sqlRowSet.getString("last_name"),
+                    sqlRowSet.getDate("enrollment_date").toLocalDate(),
+                    sqlRowSet.getString("cpr"));
+
+
+
+        }
+
         return null;
     }
 
