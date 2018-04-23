@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+
 public class StudentArrayListRepository implements IStudentRepository {
 
     private List<Student> students;

@@ -26,10 +26,6 @@ public class StudentsController {
     private IStudentRepository studentsRepository;
 
 
-    /* public StudentsController(){
-        studentsRepository = new StudentArrayListRepository();
-    } */
-
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("student_data", studentsRepository.readAll());
