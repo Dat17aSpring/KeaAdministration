@@ -25,7 +25,6 @@ public class StudentsController {
     @Autowired
     private IStudentRepository studentsRepository;
 
-
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("student_data", studentsRepository.readAll());
